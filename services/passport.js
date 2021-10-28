@@ -18,6 +18,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
+      proxy: true
     }, (at, rt, profile, done) => {
       User.findOne({googleID: profile.id}).then((existingUser) => {
         if (existingUser) {
