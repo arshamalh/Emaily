@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session')
 const passport = require("passport");
 
-if (!process.env.NODE_ENV) require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 const app = express();
 const authRouter = require("./routes/auth");
