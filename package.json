@@ -23,6 +23,7 @@
   "homepage": "https://github.com/arshamalh/Emaily#readme",
   "dependencies": {
     "cookie-session": "^1.4.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
     "passport": "^0.5.0",

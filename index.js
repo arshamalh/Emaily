@@ -1,19 +1,21 @@
 const express = require("express");
-const authRouter = require("./routes/auth");
-const app = express();
+const mongoose = require('mongoose');
 const cookieSession = require('cookie-session')
-const mongoose = require('mongoose')
 const passport = require("passport");
-const keys = require("./config/keys");
 
+if (!process.env.NODE_ENV) require('dotenv').config()
+
+const app = express();
+const authRouter = require("./routes/auth");
 require('./models/User')
 require('./services/passport')
-mongoose.connect(`mongodb://localhost:27017/emaily`);
+
+mongoose.connect(process.env.MONGO_CONNECTION_URI);
 
 app.use(
   cookieSession({
     maxAge: 30 * 864e5,
-    keys: [keys.cookieKey]
+    keys: [process.env.GOOGLE_COOKIE_KEY]
   })
 );
 
